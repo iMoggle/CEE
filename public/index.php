@@ -33,8 +33,8 @@
                         <div class="col-md-6">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <label for="email">Nombre de la institucion</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <label for="op1-nomins">Nombre de la institucion</label>
+                                    <input type="text" class="form-control" name="op1-nomins" id="op1-nomins">
                                 </div>
                                 <button type="submit" class="btn btn-default">Buscar</button>
                             </form>
@@ -98,17 +98,46 @@
                             <form>
                                 <div class="form-group">
                                     <label for="op2_entidad">Entidad</label>
-                                    <select class="form-control" id="op2_entidad">
-                                        <option value="0">Selecciona una entidad</option>
-                                        <option value="1">Aguascalientes</option>
-                                        <option value="2">Baja California</option>
-                                        <option value="3">Baja California Sur</option>
-                                        <option value="4">Ciudad de México</option>
+                                    <select class="form-control" name="op2_entidad" id="op2_entidad">
+                                        <option value="1"> Aguascalientes</option>
+                                        <option value="2"> Baja California</option>
+                                        <option value="3"> Baja California Sur</option>
+                                        <option value="4"> Campeche</option>
+                                        <option value="5"> Coahuila De Zaragoza</option>
+                                        <option value="6"> Colima</option>
+                                        <option value="7"> Chiapas</option>
+                                        <option value="8"> Chihuahua</option>
+                                        <option value="9"> Ciudad De México</option>
+                                        <option value="10"> Durango</option>
+                                        <option value="11"> Guanajuato</option>
+                                        <option value="12"> Guerrero</option>
+                                        <option value="13"> Hidalgo</option>
+                                        <option value="14"> Jalisco</option>
+                                        <option value="15"> México</option>
+                                        <option value="16"> Michoacán De Ocampo</option>
+                                        <option value="17"> Morelos</option>
+                                        <option value="18"> Nayarit</option>
+                                        <option value="19"> Nuevo León</option>
+                                        <option value="20"> Oaxaca</option>
+                                        <option value="21"> Puebla</option>
+                                        <option value="22"> Querétaro</option>
+                                        <option value="23"> Quintana Roo</option>
+                                        <option value="24"> San Luis Potosí</option>
+                                        <option value="25"> Sinaloa</option>
+                                        <option value="26"> Sonora</option>
+                                        <option value="27"> Tabasco</option>
+                                        <option value="28"> Tamaulipas</option>
+                                        <option value="29"> Tlaxcala</option>
+                                        <option value="30"> Veracruz De Ignacio De La Llave</option>
+                                        <option value="31"> Yucatán</option>
+                                        <option value="32"> Zacatecas</option>
+                                        <option value="33">Nacional</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ex1">Rango de precios</label>
-                                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                                    <label for="op2-rango">Rango de precios</label>
+                                    <input id="op2-rango" data-slider-id='ex1Slider' type="text" data-slider-min="0"
+                                           data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                                 </div>
                                 <button type="submit" class="btn btn-default">Buscar</button>
                             </form>
@@ -170,13 +199,40 @@
                         <div class="col-md-6">
                             <form>
                                 <div class="form-group">
-                                    <label for="op2_entidad">Entidad: </label>
-                                    <select class="form-control" id="op2_entidad">
-                                        <option value="0">Selecciona una entidad</option>
-                                        <option value="1">Aguascalientes</option>
-                                        <option value="2">Baja California</option>
-                                        <option value="3">Baja California Sur</option>
-                                        <option value="4">Ciudad de México</option>
+                                    <label for="op3_entidad">Entidad: </label>
+                                    <select class="form-control" name="op3_entidad" id="op3_entidad">
+                                        <option value="1"> Aguascalientes</option>
+                                        <option value="2"> Baja California</option>
+                                        <option value="3"> Baja California Sur</option>
+                                        <option value="4"> Campeche</option>
+                                        <option value="5"> Coahuila De Zaragoza</option>
+                                        <option value="6"> Colima</option>
+                                        <option value="7"> Chiapas</option>
+                                        <option value="8"> Chihuahua</option>
+                                        <option value="9"> Ciudad De México</option>
+                                        <option value="10"> Durango</option>
+                                        <option value="11"> Guanajuato</option>
+                                        <option value="12"> Guerrero</option>
+                                        <option value="13"> Hidalgo</option>
+                                        <option value="14"> Jalisco</option>
+                                        <option value="15"> México</option>
+                                        <option value="16"> Michoacán De Ocampo</option>
+                                        <option value="17"> Morelos</option>
+                                        <option value="18"> Nayarit</option>
+                                        <option value="19"> Nuevo León</option>
+                                        <option value="20"> Oaxaca</option>
+                                        <option value="21"> Puebla</option>
+                                        <option value="22"> Querétaro</option>
+                                        <option value="23"> Quintana Roo</option>
+                                        <option value="24"> San Luis Potosí</option>
+                                        <option value="25"> Sinaloa</option>
+                                        <option value="26"> Sonora</option>
+                                        <option value="27"> Tabasco</option>
+                                        <option value="28"> Tamaulipas</option>
+                                        <option value="29"> Tlaxcala</option>
+                                        <option value="30"> Veracruz De Ignacio De La Llave</option>
+                                        <option value="31"> Yucatán</option>
+                                        <option value="32"> Zacatecas</option>
                                         <option value="33">Nacional</option>
                                     </select>
                                 </div>
@@ -344,7 +400,9 @@
                                     <textarea class="form-control">
                                     </textarea>
                                 </div>
-                                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Solicitar</button>
+                                <button type="button" data-toggle="modal" data-target="#myModal"
+                                        class="btn btn-default">Solicitar
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -374,9 +432,9 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#ex1').slider({
-            formatter: function(value) {
+            formatter: function (value) {
                 return 'Current value: ' + value;
             }
         });

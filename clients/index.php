@@ -45,10 +45,10 @@
                                                 <div class="form-group">
                                                     <label for="op3_institucion">Ingresa el nombre o clave de la
                                                         institución</label>
-                                                    <input type="text" class="form-control" id="op3_institucion"
-                                                           name="op3_institucion"/>
+                                                    <input type="text" class="form-control" id="op1_institucion"
+                                                           name="op1_institucion"/>
                                                 </div>
-                                                <button type="submit" class="btn btn-default">Buscar</button>
+                                                <button type="submit" class="btn btn-primary">Buscar</button>
                                             </form>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                                 <!-- Año -->
                                                 <div class="form-group">
                                                     <label for="">Año</label>
-                                                    <select class="form-control" name="op3_ciclo" id="op3_ciclo">
+                                                    <select class="form-control" name="op1_ciclo" id="op1_ciclo">
                                                         <option value="2016">2016</option>
                                                         <option value="2015">2015</option>
                                                         <option value="2014">2014</option>
@@ -80,7 +80,7 @@
                                                 <!-- Entidad -->
                                                 <div class="form-group">
                                                     <label for="op3_entidad">Entidad: </label>
-                                                    <select class="form-control" name="op3_entidad" id="op3_entidad">
+                                                    <select class="form-control" name="op1_entidad" id="op1_entidad">
                                                         <option value="1"> Aguascalientes</option>
                                                         <option value="2"> Baja California</option>
                                                         <option value="3"> Baja California Sur</option>
@@ -119,7 +119,7 @@
                                                 <!-- Control -->
                                                 <div class="form-group">
                                                     <label for="op3_control">Control: </label>
-                                                    <select class="form-control" id="op3_control">
+                                                    <select class="form-control" id="op1_control" name="op1_control">
                                                         <option value="0">Todos</option>
                                                         <option value="1">Publico</option>
                                                         <option value="2">Privado</option>
@@ -128,7 +128,7 @@
                                                 <!-- Niveles -->
                                                 <div class="form-group">
                                                     <label for="op3_control">Nivel Educativo: </label>
-                                                    <select class="form-control" id="op3_nivel" name="op3_nivel">
+                                                    <select class="form-control" id="op1_nivel" name="op1_nivel">
                                                         <option value="0">Selecciona un nivel</option>
                                                         <option value="1">Formacion para el trabajo</option>
                                                         <option value="2">Profesional Tecnico</option>
@@ -155,7 +155,7 @@
 
                         </div>
                         <div class="col-md-6">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="divTableOp1">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>

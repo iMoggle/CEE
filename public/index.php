@@ -31,12 +31,13 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form class="form-inline">
+                            <form class="form-inline" method="post" action="db/getListadoInstitucionesMET.php">
                                 <div class="form-group">
-                                    <label for="op1-nomins">Nombre de la institucion</label>
+                                    <label for="op1-nomins">Ingresa el nombre o clave de la
+                                        institución</label>
                                     <input type="text" class="form-control" name="op1-nomins" id="op1-nomins">
                                 </div>
-                                <button type="submit" class="btn btn-default">Buscar</button>
+                                <button type="submit" class="btn btn-primary">Buscar</button>
                             </form>
                         </div>
                         <div class="col-md-6">

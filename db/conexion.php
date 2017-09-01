@@ -4,7 +4,7 @@ function conecta($tipo)
 {
     $server = 'localhost';
     $port = '3306';
-    $db = "CEE";
+    $db = "base_cee";
     $user = "root";
     $pass = "pruebasql";
     mysql_connect($server, $user, $pass) or die(mysql_error());

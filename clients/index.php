@@ -1,4 +1,7 @@
 <?php
+
+require '../db/conexion.php';
+
 ?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -11,9 +14,8 @@
             integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
             crossorigin="anonymous"></script>
     <script src="../assets/bootstrap/js/bootstrap.js"></script>
-    <script src="../assets/slider/js/bootstrap-slider.js"></script>
+    <script src="../assets/redirect/redirect.js"></script>
     <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../assets/bootstrap-slider/css/bootstrap-slider.min.css"/>
 </head>
 <body>
 <div class="container">
@@ -26,7 +28,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse3">Informacion de Matricula, Egresados y Titulados de
+                    <a data-toggle="collapse" href="#collapse3">Informacion de Matricula, Egresados y Nuevo Ingreso de
                         Educacion Media Superior y Superior</a>
                 </h2>
             </div>
@@ -86,39 +88,10 @@
                                                     <label for="op1_entidad">Entidad: </label>
                                                     <select class="form-control" name="op1_entidad" id="op1_entidad">
                                                         <option value="0">Selecciona una opción</option>
-                                                        <option value="01"> Aguascalientes</option>
-                                                        <option value="02"> Baja California</option>
-                                                        <option value="03"> Baja California Sur</option>
-                                                        <option value="04"> Campeche</option>
-                                                        <option value="05"> Coahuila De Zaragoza</option>
-                                                        <option value="06"> Colima</option>
-                                                        <option value="07"> Chiapas</option>
-                                                        <option value="08"> Chihuahua</option>
-                                                        <option value="09"> Ciudad De México</option>
-                                                        <option value="10"> Durango</option>
-                                                        <option value="11"> Guanajuato</option>
-                                                        <option value="12"> Guerrero</option>
-                                                        <option value="13"> Hidalgo</option>
-                                                        <option value="14"> Jalisco</option>
-                                                        <option value="15"> México</option>
-                                                        <option value="16"> Michoacán De Ocampo</option>
-                                                        <option value="17"> Morelos</option>
-                                                        <option value="18"> Nayarit</option>
-                                                        <option value="19"> Nuevo León</option>
-                                                        <option value="20"> Oaxaca</option>
-                                                        <option value="21"> Puebla</option>
-                                                        <option value="22"> Querétaro</option>
-                                                        <option value="23"> Quintana Roo</option>
-                                                        <option value="24"> San Luis Potosí</option>
-                                                        <option value="25"> Sinaloa</option>
-                                                        <option value="26"> Sonora</option>
-                                                        <option value="27"> Tabasco</option>
-                                                        <option value="28"> Tamaulipas</option>
-                                                        <option value="29"> Tlaxcala</option>
-                                                        <option value="30"> Veracruz De Ignacio De La Llave</option>
-                                                        <option value="31"> Yucatán</option>
-                                                        <option value="32"> Zacatecas</option>
-                                                        <option value="33">Nacional</option>
+                                                        <?php
+                                                        require '../catalogos/cat_entidad.php';
+                                                        ?>
+                                                        <option value="33">NACIONAL</option>
                                                     </select>
                                                 </div>
                                                 <!-- Control -->
@@ -165,29 +138,11 @@
 
                         </div>
                         <div class="col-md-6">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped" style="font-size: small">
-                                    <thead style="font-weight: bold;">
-                                    <tr>
-                                        <td>Institucion</td>
-                                        <td>Nombre Institucion</td>
-                                        <td>Escuela</td>
-                                        <td>Nombre Escuela</td>
-                                        <td>Carrera</td>
-                                        <td>Nombre de Carrera</td>
-                                        <td>Control</td>
-                                        <td>Subcontrol</td>
-                                        <td>Sostenimiento</td>
-                                        <td>Matricula</td>
-                                        <td>Egresados</td>
-                                        <td>Titulados</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="op1_tbody">
-                                    </tbody>
-                                </table>
+                            <div class="table-responsive" id="op1_tbody">
                             </div>
-                            <button type="button" class="btn btn-primary">Exportar a Excel</button>
+                            <button style="display: none" id="op1_btnExcel" type="button" class="btn btn-primary">
+                                Exportar a Excel
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -306,39 +261,11 @@
                                 <div class="form-group">
                                     <label for="op3_entidad">Entidad</label>
                                     <select class="form-control" name="op3_entidad" id="op3_entidad">
-                                        <option value="01"> Aguascalientes</option>
-                                        <option value="02"> Baja California</option>
-                                        <option value="03"> Baja California Sur</option>
-                                        <option value="04"> Campeche</option>
-                                        <option value="05"> Coahuila De Zaragoza</option>
-                                        <option value="06"> Colima</option>
-                                        <option value="07"> Chiapas</option>
-                                        <option value="08"> Chihuahua</option>
-                                        <option value="09"> Ciudad De México</option>
-                                        <option value="10"> Durango</option>
-                                        <option value="11"> Guanajuato</option>
-                                        <option value="12"> Guerrero</option>
-                                        <option value="13"> Hidalgo</option>
-                                        <option value="14"> Jalisco</option>
-                                        <option value="15"> México</option>
-                                        <option value="16"> Michoacán De Ocampo</option>
-                                        <option value="17"> Morelos</option>
-                                        <option value="18"> Nayarit</option>
-                                        <option value="19"> Nuevo León</option>
-                                        <option value="20"> Oaxaca</option>
-                                        <option value="21"> Puebla</option>
-                                        <option value="22"> Querétaro</option>
-                                        <option value="23"> Quintana Roo</option>
-                                        <option value="24"> San Luis Potosí</option>
-                                        <option value="25"> Sinaloa</option>
-                                        <option value="26"> Sonora</option>
-                                        <option value="27"> Tabasco</option>
-                                        <option value="28"> Tamaulipas</option>
-                                        <option value="29"> Tlaxcala</option>
-                                        <option value="30"> Veracruz De Ignacio De La Llave</option>
-                                        <option value="31"> Yucatán</option>
-                                        <option value="32"> Zacatecas</option>
-                                        <option value="33">Nacional</option>
+                                        <option value="0">Selecciona una opción</option>
+                                        <?php
+                                        require '../catalogos/cat_entidad.php';
+                                        ?>
+                                        <option value="33">NACIONAL</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -452,8 +379,15 @@
     $(document).ready(function () {
         var options_op1Clave = {
             target: '#op1_tbody',
+            success: function () {
+                $("#op1_btnExcel").show();
+            }
         };
         $('#op1_formClave, #op1_formAvanzado').ajaxForm(options_op1Clave);
+        $('#op1_btnExcel').click(function () {
+            var param = $("#op1_param").val();
+            $.redirect('../exports/getListadoInstitucionesMET_xls.php', {'params': param});
+        })
     });
 </script>
 </body>

@@ -2,25 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: MAEUSOGO
- * Date: 31/08/2017
- * Time: 11:58 PM
+ * Date: 01/09/2017
+ * Time: 02:25 AM
  */
-require 'conexion.php';
 
-if (count($_POST) > 0) {
-    $p_ciclo = isset($_POST["op1-ciclo"]) ? $_POST["op1-ciclo"] : '2016';
-    $p_nombreClave = isset($_POST["op1-nomins"]) ? $_POST["op1-nomins"] : '';
+include '../db/conexion.php';
 
-    $p_entidad = isset($_POST["op1_entidad"]) ? $_POST["op1_entidad"] : '';
-    $p_control = isset($_POST["op1_control"]) ? $_POST["op1_control"] : '';
-    $p_nivel = isset($_POST["op1_nivel"]) ? $_POST["op1_nivel"] : '';
-    $p_limite = isset($_POST["op1_limite"]) ? $_POST["op1_limite"] : '0';
+function getData()
+{
+    $nombre_archivo = "Matricula_demo";
 
-    $db_query = "CALL listado_instituciones_met_sup('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel', '$p_limite')";
-    $db_param = "('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel','0')";
+    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="' . $nombre_archivo . '".xls"');
+    header('Cache-Control: max-age=0');
+
+    $params = $_POST["params"];
+    $db_query = 'call listado_instituciones_met_sup' . $params . ';';
+
+    echo $db_query;
+
     $db_result = query($db_query);
 
-    $cadena = '<table class="table table-bordered table-striped" style="font-size: 10px;">
+    $cadena = '<table class="table table-bordered table-striped">
                                     <thead style="font-weight: bold;">
                                     <tr>
                                         <td>Institucion</td>
@@ -51,6 +54,16 @@ if (count($_POST) > 0) {
             $cadena .= $fila;
         }
     }
-    $cadena.="</tbody></table><div><input id='op1_param' type='hidden' value=\"".$db_param."\"/></div>";
-    echo $cadena;
+    return $cadena .= "</tbody></table>";
 }
+
+?>
+<html>
+<head>
+</head>
+<body>
+<div class="container">
+    <?php echo getData(); ?>
+</div>
+</body>
+</html>

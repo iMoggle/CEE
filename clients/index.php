@@ -162,10 +162,10 @@ require '../db/conexion.php';
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form id="op2_formAvanzado" method="post" action="getListadoInstitucionesKm.php">
+                            <form id="op2_formAvanzado" method="post" action="../db/getListadoInstitucionesKm.php">
                                 <!-- Nombre de la institucion -->
                                 <div class="form-group">
-                                    <label for="op2_nomins">Clave o Nombre de la institucion</label>
+                                    <label for="op2-nomins">Clave o Nombre de la institucion</label>
                                     <input type="text" class="form-control" name="op2_nomins" id="op2_nomins">
                                 </div>
                                 <!-- Rangos -->
@@ -212,32 +212,14 @@ require '../db/conexion.php';
                             </form>
                         </div>
                         <div class="col-md-6">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <td>Institucion</td>
-                                        <td>Nombre Institucion</td>
-                                        <td>Escuela</td>
-                                        <td>Nombre Escuela</td>
-                                        <td>Carrera</td>
-                                        <td>Nombre de Carrera</td>
-                                        <td>Control</td>
-                                        <td>Sostenimiento</td>
-                                        <td>Matricula</td>
-                                        <td>Egresados</td>
-                                        <td>Titulados</td>
-                                        <td>Distancia</td>
-                                        <td>Latitud</td>
-                                        <td>Longitud</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="op2_tbody">
-                                    </tbody>
-                                </table>
+                            <div class="table-responsive" id="op2_tbody">
                             </div>
-                            <button type="button" class="btn btn-primary">Exportar a Excel</button>
-                            <button type="button" class="btn btn-primary">Exportar en KML</button>
+                            <button style="display: none;" type="button" class="btn btn-primary" id="op2_btnExcel">
+                                Exportar a Excel
+                            </button>
+                            <button style="display: none;" type="button" class="btn btn-primary" id="op2_btnKml">
+                                Exportar en KML
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -387,7 +369,22 @@ require '../db/conexion.php';
         $('#op1_btnExcel').click(function () {
             var param = $("#op1_param").val();
             $.redirect('../exports/getListadoInstitucionesMET_xls.php', {'params': param});
-        })
+        });
+
+        var options_op2Clave = {
+            target: '#op2_tbody',
+            success: function () {
+                $("#op2_btnExcel").show();
+                $("#op2_btnKml").show();
+            }
+        };
+        $('#op2_formClave, #op2_formAvanzado').ajaxForm(options_op2Clave);
+        $('#op2_btnExcel').click(function () {
+            var param = $("#op2_param").val();
+            $.redirect('../exports/getListadoInstitucionesKm_xls.php', {'params': param});
+        });
+
+
     });
 </script>
 </body>

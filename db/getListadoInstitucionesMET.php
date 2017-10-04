@@ -16,8 +16,9 @@ if (count($_POST) > 0) {
     $p_nivel = isset($_POST["op1_nivel"]) ? $_POST["op1_nivel"] : '';
     $p_limite = isset($_POST["op1_limite"]) ? $_POST["op1_limite"] : '0';
 
-    $db_query = "CALL listado_instituciones_met_sup('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel', '$p_limite')";
     $db_param = "('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel','0')";
+    $db_query = "CALL web_listado_instituciones_met" . $db_param;
+
     $db_result = query($db_query);
 
     $cadena = '<table class="table table-bordered table-striped" style="font-size: 10px;">

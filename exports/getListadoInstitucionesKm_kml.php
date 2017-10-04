@@ -21,35 +21,10 @@ if (!$result)
 $dom = new DOMDocument('1.0', 'UTF-8');
 
 // Creates the root KML element and appends it to the root document.
-$node = $dom->createElementNS('http://earth.google.com/kml/2.1', 'kml');
+$node = $dom->createElementNS('http://www.opengis.net/kml/2.2', 'kml');
 $parNode = $dom->appendChild($node);
 
-// Creates a KML Document element and append it to the KML element.
-$dnode = $dom->createElement('Document');
-$docNode = $parNode->appendChild($dnode);
-
 // Creates the two Style elements, one for restaurant and one for bar, and append the elements to the Document element.
-$restStyleNode = $dom->createElement('Style');
-$restStyleNode->setAttribute('id', 'restaurantStyle');
-$restIconstyleNode = $dom->createElement('IconStyle');
-$restIconstyleNode->setAttribute('id', 'restaurantIcon');
-$restIconNode = $dom->createElement('Icon');
-$restHref = $dom->createElement('href', 'http://maps.google.com/mapfiles/kml/pal2/icon63.png');
-$restIconNode->appendChild($restHref);
-$restIconstyleNode->appendChild($restIconNode);
-$restStyleNode->appendChild($restIconstyleNode);
-$docNode->appendChild($restStyleNode);
-
-$barStyleNode = $dom->createElement('Style');
-$barStyleNode->setAttribute('id', 'barStyle');
-$barIconstyleNode = $dom->createElement('IconStyle');
-$barIconstyleNode->setAttribute('id', 'barIcon');
-$barIconNode = $dom->createElement('Icon');
-$barHref = $dom->createElement('href', 'http://maps.google.com/mapfiles/kml/pal2/icon27.png');
-$barIconNode->appendChild($barHref);
-$barIconstyleNode->appendChild($barIconNode);
-$barStyleNode->appendChild($barIconstyleNode);
-$docNode->appendChild($barStyleNode);
 
 // Iterates through the MySQL results, creating one Placemark for each row.
 while ($row = @mysql_fetch_assoc($result))

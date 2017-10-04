@@ -1,29 +1,28 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: MAEUSOGO
- * Date: 01/09/2017
- * Time: 02:25 AM
+ * User: Francisco Javier Montiel Morán
+ * Correo: francisco.montiel@enlace.edu.mx
+ * Date: 04/10/2017
+ * Time: 04:18 PM
  */
+require 'conexion.php';
 
-include '../db/conexion.php';
+if (count($_POST) > 0) {
 
-function getData()
-{
-    $nombre_archivo = "ListadoInstitucionMatricula_" . date("Y-m-d_h:i");
+    $p_ciclo = isset($_POST["op2-ciclo"]) ? $_POST["op2-ciclo"] : '2016';
+    $p_nombreClave = isset($_POST["op2-nomins"]) ? $_POST["op2-nomins"] : '';
 
-    header('Content-Type: application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="' . $nombre_archivo . '".xls"');
-    header('Cache-Control: max-age=0');
+    $p_radio = isset($_POST["op2_radio"]) ? $_POST["op2_radio"] : '';
+    $p_control = isset($_POST["op2_control"]) ? $_POST["op2_control"] : '';
+    $p_nivel = isset($_POST["op2_nivel"]) ? $_POST["op2_nivel"] : '';
+    $p_limite = isset($_POST["op2_limite"]) ? $_POST["op2_limite"] : '0';
 
-    $params = $_POST["params"];
-    $db_query = 'call web_listado_instituciones_met' . $params . ';';
-
-    echo $db_query;
-
+    $db_param = "('$p_nombreClave', '$p_control', '$p_nivel', '$p_ciclo', '$p_radio','0')";
+    $db_query = "CALL web_listado_instituciones_km" . $db_param;
     $db_result = query($db_query);
 
-    $cadena = '<table class="table table-bordered table-striped">
+    $cadena = '<table class="table table-bordered table-striped" style="font-size: 10px;">
                                     <thead style="font-weight: bold;">
                                     <tr>
                                         <td>Institucion</td>
@@ -38,6 +37,9 @@ function getData()
                                         <td>Matricula</td>
                                         <td>Egresados</td>
                                         <td>Nuevo Ingreso</td>
+                                        <td>Distancia</td> 
+                                        <td>Latitud</td>
+                                        <td>Longitud</td>
                                     </tr>
                                     </thead>
                                     <tbody>';
@@ -54,16 +56,6 @@ function getData()
             $cadena .= $fila;
         }
     }
-    return $cadena .= "</tbody></table>";
+    $cadena .= "</tbody></table><div><input id='op2_param' type='hidden' value=\"" . $db_param . "\"/></div>";
+    echo $cadena;
 }
-
-?>
-<html>
-<head>
-</head>
-<body>
-<div class="container">
-    <?php echo getData(); ?>
-</div>
-</body>
-</html>

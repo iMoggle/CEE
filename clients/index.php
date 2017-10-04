@@ -165,7 +165,7 @@ require '../db/conexion.php';
                             <form id="op2_formAvanzado" method="post" action="getListadoInstitucionesKm.php">
                                 <!-- Nombre de la institucion -->
                                 <div class="form-group">
-                                    <label for="op2-nomins">Clave o Nombre de la institucion</label>
+                                    <label for="op2_nomins">Clave o Nombre de la institucion</label>
                                     <input type="text" class="form-control" name="op2_nomins" id="op2_nomins">
                                 </div>
                                 <!-- Rangos -->

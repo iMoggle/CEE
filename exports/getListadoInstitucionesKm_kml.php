@@ -8,54 +8,69 @@
  */
 require '../db/conexion.php';
 
-// Selects all the rows in the markers table.
-$query = 'SELECT * FROM markers WHERE 1';
-$result = mysql_query($query);
-
-if (!$result)
+function getData()
 {
-    die('Invalid query: ' . mysql_error());
-}
+    $nombre_archivo = "ListadoInstitucionRadio_" . date("Y-m-d_h:i");
 
-// Creates the Document.
-$dom = new DOMDocument('1.0', 'UTF-8');
+    header('Content-type: application/vnd.google-earth.kml+xml');
+    header('Content-Disposition: attachment;filename="' . $nombre_archivo . '".kml"');
+    header('Cache-Control: max-age=0');
+
+    $params = $_POST["params"];
+    $db_query = 'call web_listado_instituciones_km' . $params . ';';
+
+    // Creates the Document.
+    $dom = new DOMDocument('1.0', 'UTF-8');
 
 // Creates the root KML element and appends it to the root document.
-$node = $dom->createElementNS('http://www.opengis.net/kml/2.2', 'kml');
-$parNode = $dom->appendChild($node);
+    $node = $dom->createElementNS('http://earth.google.com/kml/2.1', 'kml');
+    $parNode = $dom->appendChild($node);
 
-// Creates the two Style elements, one for restaurant and one for bar, and append the elements to the Document element.
+// Creates a KML Document element and append it to the KML element.
+    $dnode = $dom->createElement('Document');
+    $docNode = $parNode->appendChild($dnode);
 
 // Iterates through the MySQL results, creating one Placemark for each row.
-while ($row = @mysql_fetch_assoc($result))
-{
-    // Creates a Placemark and append it to the Document.
+    $db_result = query($db_query);
+    if (num($db_result) > 0) {
+        for ($indice = 0; $indice < num($db_result); $indice++) {
+            $row = arreglo($db_result);
 
-    $node = $dom->createElement('Placemark');
-    $placeNode = $docNode->appendChild($node);
+            // Creates a Placemark and append it to the Document.
 
-    // Creates an id attribute and assign it the value of id column.
-    $placeNode->setAttribute('id', 'placemark' . $row['id']);
+            $node = $dom->createElement('Placemark');
+            $placeNode = $docNode->appendChild($node);
 
-    // Create name, and description elements and assigns them the values of the name and address columns from the results.
-    $nameNode = $dom->createElement('name',htmlentities($row['name']));
-    $placeNode->appendChild($nameNode);
-    $descNode = $dom->createElement('description', $row['address']);
-    $placeNode->appendChild($descNode);
-    $styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
-    $placeNode->appendChild($styleUrl);
+            // Create name, and description elements and assigns them the values of the name and address columns from the results.
+            $claveNode = $dom->createElement('clave', htmlentities($row['CV_ESCUELA']));
+            $placeNode->appendChild($claveNode);
+            $nombreNode = $dom->createElement('nombre', htmlentities($row['NM_ESC_SEP']));
+            $placeNode->appendChild($nombreNode);
+            $descNode = $dom->createElement('descripcion', $row['NM_ESC_SEP']);
+            $placeNode->appendChild($descNode);
 
-    // Creates a Point element.
-    $pointNode = $dom->createElement('Point');
-    $placeNode->appendChild($pointNode);
+            // Creates a Point element.
+            $pointNode = $dom->createElement('Point');
+            $placeNode->appendChild($pointNode);
 
-    // Creates a coordinates element and gives it the value of the lng and lat columns from the results.
-    $coorStr = $row['lng'] . ','  . $row['lat'];
-    $coorNode = $dom->createElement('coordinates', $coorStr);
-    $pointNode->appendChild($coorNode);
+            // Creates a coordinates element and gives it the value of the lng and lat columns from the results.
+            $coorStr = $row['LONG_CEE'] . ',' . $row['LAT_CEE'];
+            $coorNode = $dom->createElement('coordinates', $coorStr);
+            $pointNode->appendChild($coorNode);
+
+        }
+    }
+    $kmlOutput = $dom->saveXML();
+    return $kmlOutput;
 }
 
-$kmlOutput = $dom->saveXML();
-header('Content-type: application/vnd.google-earth.kml+xml');
-echo $kmlOutput;
 ?>
+<html>
+<head>
+</head>
+<body>
+<div class="container">
+    <?php echo getData(); ?>
+</div>
+</body>
+</html>

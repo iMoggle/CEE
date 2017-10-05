@@ -383,6 +383,10 @@ require '../db/conexion.php';
             var param = $("#op2_param").val();
             $.redirect('../exports/getListadoInstitucionesKm_xls.php', {'params': param});
         });
+        $('#op2_btnKml').click(function () {
+            var param = $("#op2_param").val();
+            $.redirect('../exports/getListadoInstitucionesKm_kml.php', {'params': param});
+        });
 
 
     });

@@ -23,7 +23,7 @@ function getData()
     $dom = new DOMDocument('1.0', 'UTF-8');
 
 // Creates the root KML element and appends it to the root document.
-    $node = $dom->createElementNS('http://earth.google.com/kml/2.1', 'kml');
+    $node = $dom->createElementNS('http://earth.google.com/kml/2.2', 'kml');
     $parNode = $dom->appendChild($node);
 
 // Creates a KML Document element and append it to the KML element.
@@ -64,13 +64,4 @@ function getData()
     return $kmlOutput;
 }
 
-?>
-<html>
-<head>
-</head>
-<body>
-<div class="container">
-    <?php echo getData(); ?>
-</div>
-</body>
-</html>
+echo getData(); ?>

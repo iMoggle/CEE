@@ -23,7 +23,11 @@
 
         if (count($_POST) > 0)
         {
-            if ($_POST["username"] == "cliente") {
+            include '../db/conexion.php';
+
+            //$db_query = query(call auten)
+
+            if ($_POST["username"] == "admin") {
                 header("Location: ../clients/index.php");
             } else {
                 ?>

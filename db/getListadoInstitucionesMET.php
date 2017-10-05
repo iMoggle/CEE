@@ -16,8 +16,9 @@ if (count($_POST) > 0) {
     $p_nivel = isset($_POST["op1_nivel"]) ? $_POST["op1_nivel"] : '';
     $p_limite = isset($_POST["op1_limite"]) ? $_POST["op1_limite"] : '0';
 
-    $db_param = "('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel','0')";
+    $db_param = "('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel',$p_limite)";
     $db_query = "CALL web_listado_instituciones_met" . $db_param;
+    $db_param_export = "('$p_ciclo', '$p_nombreClave', '$p_entidad', '$p_control', '$p_nivel',0)";
 
     $db_result = query($db_query);
 
@@ -52,6 +53,6 @@ if (count($_POST) > 0) {
             $cadena .= $fila;
         }
     }
-    $cadena.="</tbody></table><div><input id='op1_param' type='hidden' value=\"".$db_param."\"/></div>";
+    $cadena.="</tbody></table><div><input id='op1_param' type='hidden' value=\"".$db_param_export."\"/></div>";
     echo $cadena;
 }

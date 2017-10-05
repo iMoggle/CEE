@@ -10,15 +10,16 @@ require 'conexion.php';
 
 if (count($_POST) > 0) {
 
-    $p_ciclo = isset($_POST["op2-ciclo"]) ? $_POST["op2-ciclo"] : '2016';
-    $p_nombreClave = isset($_POST["op2-nomins"]) ? $_POST["op2-nomins"] : '';
+    $p_ciclo = isset($_POST["op2-ciclo"]) ? $_POST["op2-ciclo"] : '2015';
+    $p_nombreClave = isset($_POST["op2_nomins"]) ? $_POST["op2_nomins"] : '';
 
     $p_radio = isset($_POST["op2_radio"]) ? $_POST["op2_radio"] : '';
     $p_control = isset($_POST["op2_control"]) ? $_POST["op2_control"] : '';
     $p_nivel = isset($_POST["op2_nivel"]) ? $_POST["op2_nivel"] : '';
     $p_limite = isset($_POST["op2_limite"]) ? $_POST["op2_limite"] : '0';
 
-    $db_param = "('$p_nombreClave', '$p_control', '$p_nivel', '$p_ciclo', '$p_radio','0')";
+    $db_param = "('$p_nombreClave', '$p_control', '$p_nivel', '$p_ciclo', '$p_radio',$p_limite)";
+    $db_param_export = "('$p_nombreClave', '$p_control', '$p_nivel', '$p_ciclo', '$p_radio',0)";
     $db_query = "CALL web_listado_instituciones_km" . $db_param;
     $db_result = query($db_query);
 
@@ -50,12 +51,13 @@ if (count($_POST) > 0) {
             $fila = "<tr>";
             $fila .= "<td>" . $row["CV_INSTITUCION"] . "</td><td>" . $row["NM_INSTITUCION"] . "</td><td>" . $row["CV_ESCUELA"] . "</td>";
             $fila .= "<td>" . $row["NM_ESC_SEP"] . "</td><td>" . $row["CV_CARRERA"] . "</td><td>" . $row["NM_CARRERA"] . "</td>";
-            $fila .= "<td>" . $row["CONTROL"] . "</td><td>" . $row["SUBCONTROL"] . "</td><td>" . $row["SOSTENIMIENTO"] . "</td>";
+            $fila .= "<td>" . $row["CONTROL"] . "</td><td>" . $row["SUBCONTROL"] . "</td><td>" . $row["NM_SOSTENIMIENTO"] . "</td>";
             $fila .= "<td>" . $row["MATRICULA"] . "</td><td>" . $row["EGRESADOS"] . "</td><td>" . $row["NVOINGRESO"] . "</td>";
+            $fila .= "<td>" . $row["DISTANCIA"] . "</td><td>" . $row["LAT_CEE"] . "</td><td>" . $row["LONG_CEE"] . "</td>";
             $fila .= "</tr>";
             $cadena .= $fila;
         }
     }
-    $cadena .= "</tbody></table><div><input id='op2_param' type='hidden' value=\"" . $db_param . "\"/></div>";
+    $cadena .= "</tbody></table><div><input id='op2_param' type='hidden' value=\"" . $db_param_export . "\"/></div>";
     echo $cadena;
 }

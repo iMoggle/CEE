@@ -1,9 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: MAEUSOGO
- * Date: 31/08/2017
- * Time: 11:58 PM
+ * User: Francisco Javier Montiel Morán
+ * Correo: francisco.montiel@enlace.edu.mx
+ * Date: 04/10/2017
+ * Time: 04:18 PM
  */
 require 'conexion.php';
 

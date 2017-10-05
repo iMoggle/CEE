@@ -9,7 +9,6 @@
 require 'conexion.php';
 
 if (count($_POST) > 0) {
-
     $p_ciclo = isset($_POST["op2-ciclo"]) ? $_POST["op2-ciclo"] : '2015';
     $p_nombreClave = isset($_POST["op2_nomins"]) ? $_POST["op2_nomins"] : '';
 

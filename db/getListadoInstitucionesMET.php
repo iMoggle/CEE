@@ -53,7 +53,11 @@ if (count($_POST) > 0) {
             $fila .= "</tr>";
             $cadena .= $fila;
         }
+    } else {
+        $fila = "<tr>";
+        $fila .= "<td colspan='12'>No hay resultados a mostrar con los parámetros indicados</td>";
+        $fila .= "</tr>";
     }
-    $cadena.="</tbody></table><div><input id='op1_param' type='hidden' value=\"".$db_param_export."\"/></div>";
+    $cadena .= "</tbody></table><div><input id='op2_param' type='hidden' value=\"" . $db_param_export . "\"/></div>";
     echo $cadena;
 }

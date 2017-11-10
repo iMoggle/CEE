@@ -1,6 +1,7 @@
 <?php
 
-require '../db/conexion.php';
+require "../assets/config.php";
+require __URL_EDUCAR__ . '/db/conexion.php';
 
 ?>
 <html>
@@ -23,7 +24,7 @@ require '../db/conexion.php';
         <h1>[Nombre del Cliente]</h1>
         <p>Es esta seccion, podras seleccionar consultas compiladas desde nuestro dataset.</p>
     </div>
-    <!--Informacion de matricula, egresados y titulados-->
+    <!--Informacion de matricula, egresados y titulados -->
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -47,7 +48,7 @@ require '../db/conexion.php';
                                     <div id="collapse3_1" class="panel-collapse collapse">
                                         <div class="panel-body">
                                             <form id="op1_formClave" method="post"
-                                                  action="../db/getListadoInstitucionesMET.php">
+                                                  action="<?= __URL_EDUCAR__ ?>/db/getListadoInstitucionesMET.php">
                                                 <div class="form-group">
                                                     <label for="op1-nomins">Ingresa el nombre o clave de la
                                                         institución</label>
@@ -71,7 +72,7 @@ require '../db/conexion.php';
                                     <div id="collapse3_2" class="panel-collapse collapse">
                                         <div class="panel-body">
                                             <form id="op1_formAvanzado" method="post"
-                                                  action="../db/getListadoInstitucionesMET.php">
+                                                  action="<?= __URL_EDUCAR__ ?>/db/getListadoInstitucionesMET.php">
                                                 <div class="form-group">
                                                     <label for="op1_ciclo">Año</label>
                                                     <select class="form-control" name="op1_ciclo" id="op1_ciclo">
@@ -89,7 +90,7 @@ require '../db/conexion.php';
                                                     <select class="form-control" name="op1_entidad" id="op1_entidad">
                                                         <option value="0">Selecciona una opción</option>
                                                         <?php
-                                                        require '../catalogos/cat_entidad.php';
+                                                        require __URL_EDUCAR__ . '/catalogos/cat_entidad.php';
                                                         ?>
                                                         <option value="33">NACIONAL</option>
                                                     </select>
@@ -149,7 +150,7 @@ require '../db/conexion.php';
             </div>
         </div>
     </div>
-    <!--Informacion de Escuelas por radio km-->
+    <!--Informacion de Escuelas por radio km -->
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -162,7 +163,8 @@ require '../db/conexion.php';
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form id="op2_formAvanzado" method="post" action="../db/getListadoInstitucionesKm.php">
+                            <form id="op2_formAvanzado" method="post"
+                                  action="<?= __URL_EDUCAR__ ?>/db/getListadoInstitucionesKm.php">
                                 <!-- Nombre de la institucion -->
                                 <div class="form-group">
                                     <label for="op2-nomins">Clave o Nombre de la institucion</label>
@@ -226,7 +228,7 @@ require '../db/conexion.php';
             </div>
         </div>
     </div>
-    <!--Informacion de Escuelas por rango de precios-->
+    <!--Informacion de Escuelas por rango de precios -->
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -239,13 +241,14 @@ require '../db/conexion.php';
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form id="op3_formAvanzado" method="post" action="getListadoInstitucionesPrecio.php">
+                            <form id="op3_formAvanzado" method="post"
+                                  action="<?= __URL_EDUCAR__ ?>/db/getListadoInstitucionesPrecio.php">
                                 <div class="form-group">
                                     <label for="op3_entidad">Entidad</label>
                                     <select class="form-control" name="op3_entidad" id="op3_entidad">
                                         <option value="0">Selecciona una opción</option>
                                         <?php
-                                        require '../catalogos/cat_entidad.php';
+                                        require __URL_EDUCAR__ . '/catalogos/cat_entidad.php';
                                         ?>
                                         <option value="33">NACIONAL</option>
                                     </select>
@@ -303,6 +306,7 @@ require '../db/conexion.php';
             </div>
         </div>
     </div>
+    <!--Informacion de Catalogo de Carreras -->
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -368,7 +372,7 @@ require '../db/conexion.php';
         $('#op1_formClave, #op1_formAvanzado').ajaxForm(options_op1Clave);
         $('#op1_btnExcel').click(function () {
             var param = $("#op1_param").val();
-            $.redirect('../exports/getListadoInstitucionesMET_xls.php', {'params': param});
+            $.redirect('<?=__URL_EDUCAR__?>/exports/getListadoInstitucionesMET_xls.php', {'params': param});
         });
 
         var options_op2Clave = {
@@ -381,11 +385,11 @@ require '../db/conexion.php';
         $('#op2_formClave, #op2_formAvanzado').ajaxForm(options_op2Clave);
         $('#op2_btnExcel').click(function () {
             var param = $("#op2_param").val();
-            $.redirect('../exports/getListadoInstitucionesKm_xls.php', {'params': param});
+            $.redirect('<?=__URL_EDUCAR__?>/exports/getListadoInstitucionesKm_xls.php', {'params': param});
         });
         $('#op2_btnKml').click(function () {
             var param = $("#op2_param").val();
-            $.redirect('../exports/getListadoInstitucionesKm_kml.php', {'params': param});
+            $.redirect('<?=__URL_EDUCAR__?>/exports/getListadoInstitucionesKm_kml.php', {'params': param});
         });
 
 

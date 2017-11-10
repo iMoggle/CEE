@@ -17,12 +17,12 @@ class Conexion
         $port = '3306';
         switch ($this->db) {
             case "base_cee":
-                $user = "";
-                $pass = "";
+                $user = "root";
+                $pass = "pruebasql";
                 break;
             case "web_cee":
-                $user = "";
-                $pass = "";
+                $user = "root";
+                $pass = "pruebasql";
                 break;
         }
 

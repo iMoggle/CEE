@@ -67,13 +67,56 @@ require "./assets/config.php";
                             </form>
                             <form id="register-form" action="./admin/registro.php" method="post"
                                   role="form" style="display: none;">
+
                                 <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
-                                           placeholder="Usuario" value="">
+                                    <label class="control-label" for="txtNombre">Nombre(s)</label>
+                                    <div>
+                                        <input id="txtNombre" name="txtNombre" type="text"
+                                               placeholder="Ingresa su nombre"
+                                               class="form-control" required="">
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control"
-                                           placeholder="Correo electronico" value="">
+                                    <label class="control-label" for="txtApPaterno">Primer Apellido</label>
+                                    <div>
+                                        <input id="txtApPaterno" name="txtApPaterno" type="text"
+                                               placeholder="Ingresa su primer apellido"
+                                               class="form-control input-md" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="txtApMaterno">Segundo Apellido</label>
+                                    <div>
+                                        <input id="txtApMaterno" name="txtApMaterno" type="text"
+                                               placeholder="Ingresa tu segundo apellido"
+                                               class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="divCorreo">
+                                    <label class="control-label" for="txtCorreo">Email</label>
+                                    <div>
+                                        <input id="txtCorreo" name="txtCorreo" type="email"
+                                               placeholder="Ingresa tu correo electronico"
+                                               class="form-control input-md" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="txtTelefono">Telefono de contacto</label>
+                                    <div>
+                                        <input id="txtTelefono" name="txtTelefono" type="number"
+                                               placeholder="Ingresa tu numero telefonico"
+                                               class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="txtTelefono">Usuario</label>
+                                    <input type="text" name="txtUser" id="txtUser" class="form-control input-md"
+                                           placeholder="Ingre un usuario" required="required">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2"
